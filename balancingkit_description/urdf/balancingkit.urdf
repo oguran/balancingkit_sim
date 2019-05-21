@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot name="balancingkit">
+  <link name="base_link">
+    <origin xyz="0 0 0.040" rpy="0 0 0"/>
+    <visual>
+      <geometry>
+        <mesh filename="package://balancingkit_description/meshes/dae/body/balboa_balancing_robot_kit_body.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="left-wheel_joint" type="continuous">
+    <origin xyz="-0.051 0 0" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <parent link="base_link"/>
+    <child link="left-wheel"/>
+  </joint>
+
+  <link name="left-wheel">
+    <visual>
+      <geometry>
+        <mesh filename="package://balancingkit_description/meshes/dae/wheel/balboa_balancing_robot_kit_wheel_left.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="right-wheel_joint" type="continuous">
+    <origin xyz="0.051 0 0" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <parent link="base_link"/>
+    <child link="right-wheel"/>
+  </joint>
+
+  <link name="right-wheel">
+    <visual>
+      <geometry>
+        <mesh filename="package://balancingkit_description/meshes/dae/wheel/balboa_balancing_robot_kit_wheel_right.dae"/>
+      </geometry>
+    </visual>
+  </link>
+</robot>
