@@ -1,0 +1,46 @@
+Info on the element
+___________________
+06/29/2019 11:44:27
+
+Name of the document      :	balboa_balancing_robot_kit_body
+Label Name                :	bal01a01
+Internal Name             :	Part__Feature004
+Name of the element       :	
+Object type               :	Compound
+Mouse coordinates         :	  X:	0.0	mm	  Y:	0.0	mm	  Z:	0.0	mm
+Length of object          :	0.0	mm
+Perimeter of the shape    :	6653.51612206	mm
+
+
+Plan                     :	 XY:	0.0°	 coordinates:	[,0.0 , 0.0,]  [,0.0 , 0.0,]
+Plan                     :	 YZ:	0.0°	 coordinates:	[,0.0 , 0.0,]  [,0.0 , 0.0,]
+Plan                     :	 ZX:	0.0°	 coordinates:	[,0.0 , 0.0,]  [,0.0 , 0.0,]
+
+The form surface         :	16423.4951382	mm
+Surface of the face      :	0.0	mm
+
+Volume of the form       :	11603.8891251	mm
+Weight                   :	1160.38891251	cg	 Density:	1.0
+
+Center of the shape      :	 X:	-0.746070775476	mm	 Y:	3.76208366183	mm	 Z:	3.61654718975	mm
+Center of mass           :	 X:	-15.4977348648	mm	 Y:	7.44134419708	mm	 Z:	3.551698434	mm
+BoundBox                 :	 X:	69.056150751	mm	 Y:	109.22	mm	 Z:	12.0033382558	mm
+BoundBox Diagonal        :	129.776116777	mm
+
+Direction                :	0.0
+ValueAt                  :	0.0
+
+Matrix of inertia        :	mm^5
+                         :	 X:	1815.24184545	 Y:	-113.989580725	 Z:	13.3667674689	 :	0.0
+                         :	 X:	-113.989580725	 Y:	1815.24184545	 Z:	13.3667674689	 :	0.0
+                         :	 X:	13.3667674689	 Y:	13.3667674689	 Z:	2904.10460112	 :	0.0
+                         :	 X:	0.0	 Y:	0.0	 Z:	0.0	 :	1.0
+
+Matrix inertia with mass :	cgmm
+                         :	 X:	181.524184545	 Y:	-11.3989580725	 Z:	1.33667674689
+                         :	 X:	-11.3989580725	 Y:	181.524184545	 Z:	1.33667674689
+                         :	 X:	1.33667674689	 Y:	1.33667674689	 Z:	290.410460112
+
+Matrix Determinant       :	9530899421.81
+Determinant decimal      :	9530899421.8127231597900390625
+

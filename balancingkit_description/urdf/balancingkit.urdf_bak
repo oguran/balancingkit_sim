@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<robot name="balancingkit">
+  <!-- <link name="base_body_chassis"> -->
+  <link name="base_link">
+    <origin xyz="0 0 0.040" rpy="0 0 0"/>
+    <inertial>
+      <origin xyz="0.0507715875056 -0.0198591222944 -0.00968188835885"/>
+      <mass value="0.01922" />
+      <inertia ixx="0.000021836231232" ixy="0.0000000000140164107267" ixz="-0.0000000000027044890047" iyy="0.0000110526711849" iyz="-0.00000000000290583186698" izz="0.0110489237048" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://balancingkit_description/meshes/stl/body/balboa_balancing_robot_kit_body_chassis_m_c.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://balancingkit_description/meshes/stl/body/balboa_balancing_robot_kit_body_chassis_m_c.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="left-wheel_joint" type="continuous">
+    <origin xyz="-0.051 0 0" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <parent link="base_link"/>
+    <child link="left-wheel"/>
+  </joint>
+
+  <link name="left-wheel">
+    <inertial>
+      <mass value="1.0" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+    </inertial>
+    <visual>
+      <geometry>
+<!-- <mesh filename="package://balancingkit_description/meshes/dae/wheel/balboa_balancing_robot_kit_wheel_left.dae"/> -->
+        <mesh filename="package://balancingkit_description/meshes/stl/wheel/balboa_balancing_robot_kit_wheel_left_m.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://balancingkit_description/meshes/stl/wheel/balboa_balancing_robot_kit_wheel_left_m.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="right-wheel_joint" type="continuous">
+    <origin xyz="0.051 0 0" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <parent link="base_link"/>
+    <child link="right-wheel"/>
+  </joint>
+
+  <link name="right-wheel">
+    <inertial>
+      <mass value="1.0" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+    </inertial>
+    <visual>
+      <geometry>
+<!--        <mesh filename="package://balancingkit_description/meshes/dae/wheel/balboa_balancing_robot_kit_wheel_right.dae"/> -->
+        <mesh filename="package://balancingkit_description/meshes/stl/wheel/balboa_balancing_robot_kit_wheel_right_m.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://balancingkit_description/meshes/stl/wheel/balboa_balancing_robot_kit_wheel_right_m.stl"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

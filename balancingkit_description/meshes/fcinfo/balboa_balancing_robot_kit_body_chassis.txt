@@ -1,0 +1,46 @@
+Info on the element
+___________________
+06/29/2019 11:34:51
+
+Name of the document      :	balboa_balancing_robot_kit_body
+Label Name                :	chassis
+Internal Name             :	Part__Feature
+Name of the element       :	
+Object type               :	Solid
+Mouse coordinates         :	  X:	0.0	mm	  Y:	0.0	mm	  Z:	0.0	mm
+Length of object          :	0.0	mm
+Perimeter of the shape    :	20129.0689773	mm
+
+
+Plan                     :	 XY:	0.0°	 coordinates:	[,0.0 , 0.0,]  [,0.0 , 0.0,]
+Plan                     :	 YZ:	0.0°	 coordinates:	[,0.0 , 0.0,]  [,0.0 , 0.0,]
+Plan                     :	 ZX:	0.0°	 coordinates:	[,0.0 , 0.0,]  [,0.0 , 0.0,]
+
+The form surface         :	45461.9991685	mm
+Surface of the face      :	0.0	mm
+
+Volume of the form       :	68701.6219743	mm
+Weight                   :	6870.16219743	cg	 Density:	1.0
+
+Center of the shape      :	 X:	-4.97379915032e-14	mm	 Y:	4.09617828431	mm	 Z:	-4.06422997325	mm
+Center of mass           :	 X:	-0.116090780336	mm	 Y:	-10.0840601325	mm	 Z:	-4.88958870519	mm
+BoundBox                 :	 X:	107.0	mm	 Y:	104.112200445	mm	 Z:	47.3953839298	mm
+BoundBox Diagonal        :	156.635477141	mm
+
+Direction                :	Vector (0.0, 6.697556455916327, -2.842170943040401e-14)
+ValueAt                  :	0.0
+
+Matrix of inertia        :	mm^5
+                         :	 X:	49513418.7146	 Y:	459703.300811	 Z:	39064.3166521	 :	0.0
+                         :	 X:	459703.300811	 Y:	74204455.6742	 Z:	1884801.64726	 :	0.0
+                         :	 X:	39064.3166521	 Y:	1884801.64726	 Z:	110629678.615	 :	0.0
+                         :	 X:	0.0	 Y:	0.0	 Z:	0.0	 :	1.0
+
+Matrix inertia with mass :	cgmm
+                         :	 X:	4951341.87146	 Y:	45970.3300811	 Z:	3906.43166521
+                         :	 X:	45970.3300811	 Y:	7420445.56742	 Z:	188480.164726
+                         :	 X:	3906.43166521	 Y:	188480.164726	 Z:	11062967.8615
+
+Matrix Determinant       :	4.06266983835e+23
+Determinant decimal      :	406266983834991875588096
+

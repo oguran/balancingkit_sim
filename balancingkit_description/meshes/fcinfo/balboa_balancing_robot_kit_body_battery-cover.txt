@@ -1,0 +1,46 @@
+Info on the element
+___________________
+06/29/2019 11:41:52
+
+Name of the document      :	balboa_balancing_robot_kit_body1
+Label Name                :	battery-cover
+Internal Name             :	Part__Feature001
+Name of the element       :	
+Object type               :	Solid
+Mouse coordinates         :	  X:	0.0	mm	  Y:	0.0	mm	  Z:	0.0	mm
+Length of object          :	0.0	mm
+Perimeter of the shape    :	8935.77706772	mm
+
+
+Plan                     :	 XY:	0.0°	 coordinates:	[,0.0 , 0.0,]  [,0.0 , 0.0,]
+Plan                     :	 YZ:	0.0°	 coordinates:	[,0.0 , 0.0,]  [,0.0 , 0.0,]
+Plan                     :	 ZX:	0.0°	 coordinates:	[,0.0 , 0.0,]  [,0.0 , 0.0,]
+
+The form surface         :	18410.9756224	mm
+Surface of the face      :	0.0	mm
+
+Volume of the form       :	13540.9963305	mm
+Weight                   :	1354.09963305	cg	 Density:	1.0
+
+Center of the shape      :	 X:	-1.15463194561e-13	mm	 Y:	3.71691924012	mm	 Z:	-11.5616341544	mm
+Center of mass           :	 X:	0.00135122807529	mm	 Y:	1.89126996962	mm	 Z:	-18.4977598889	mm
+BoundBox                 :	 X:	59.7	mm	 Y:	103.053682357	mm	 Z:	20.7961400959	mm
+BoundBox Diagonal        :	120.899259262	mm
+
+Direction                :	Vector (-1.7245140000000019, -1.5762939976017805, -0.497029638883415)
+ValueAt                  :	0.0
+
+Matrix of inertia        :	mm^5
+                         :	 X:	9581429.8723	 Y:	-605.27199711	 Z:	19.5271739502	 :	0.0
+                         :	 X:	-605.27199711	 Y:	3388820.89633	 Z:	-230335.514201	 :	0.0
+                         :	 X:	19.5271739502	 Y:	-230335.514201	 Z:	12756434.222	 :	0.0
+                         :	 X:	0.0	 Y:	0.0	 Z:	0.0	 :	1.0
+
+Matrix inertia with mass :	cgmm
+                         :	 X:	958142.98723	 Y:	-60.527199711	 Z:	1.95271739502
+                         :	 X:	-60.527199711	 Y:	338882.089633	 Z:	-23033.5514201
+                         :	 X:	1.95271739502	 Y:	-23033.5514201	 Z:	1275643.4222
+
+Matrix Determinant       :	4.13689884967e+20
+Determinant decimal      :	413689884966636945408
+

@@ -1,0 +1,46 @@
+Info on the element
+___________________
+06/25/2019 15:44:00
+
+Name of the document      :	Unnamed1
+Label Name                :	wheel_black
+Internal Name             :	Part__Feature002
+Name of the element       :	Face541
+Object type               :	Solid
+Mouse coordinates         :	  X:	46.2162590027	mm	  Y:	-58.6007766724	mm	  Z:	-1.47058391571	mm
+Perimeter of face         :	498.413675319	mm
+Perimeter of the shape    :	6641.65714766	mm
+
+
+Plan                     :	 XY:	0.0°	 coordinates:	[,0.0 , 0.0,]  [,0.0 , 0.0,]
+Plan                     :	 YZ:	0.0°	 coordinates:	[,0.0 , 0.0,]  [,0.0 , 0.0,]
+Plan                     :	 ZX:	0.0°	 coordinates:	[,0.0 , 0.0,]  [,0.0 , 0.0,]
+
+The form surface         :	11409.7035555	mm²
+Surface of the face      :	526.42238886	mm²
+
+Volume of the form       :	19220.0809141	mm³
+Weight                   :	19.2200809141	g	 Density:	1.0
+
+Center of the shape      :	 X:	49.925	mm	 Y:	-19.8469520024	mm	 Z:	-9.68192193817	mm
+Center of mass           :	 X:	50.7715875056	mm	 Y:	-19.8591222944	mm	 Z:	-9.68188835885	mm
+BoundBox                 :	 X:	11.75	mm	 Y:	79.9740601285	mm	 Z:	79.969624562	mm
+BoundBox Diagonal        :	113.705996526	mm
+
+Direction                :	0.0
+ValueAt                  :	Vector (45.80000000000003, 18.790078061834777, -9.681921938165168)
+
+Matrix of inertia        :	mm^5
+                         :	 X:	21836231.232	 Y:	14.0164107267	 Z:	-2.7044890047	 :	0.0
+                         :	 X:	14.0164107267	 Y:	11052671.1849	 Z:	-2.90583186698	 :	0.0
+                         :	 X:	-2.7044890047	 Y:	-2.90583186698	 Z:	11048923.7048	 :	0.0
+                         :	 X:	0.0	 Y:	0.0	 Z:	0.0	 :	1.0
+
+Matrix inertia with mass :	gmm²
+                         :	 X:	21836.231232	 Y:	0.0140164107267	 Z:	-0.0027044890047
+                         :	 X:	0.0140164107267	 Y:	11052.6711849	 Z:	-0.00290583186698
+                         :	 X:	-0.0027044890047	 Y:	-0.00290583186698	 Z:	11048.9237048
+
+Matrix Determinant       :	2.66664319273e+21
+Determinant decimal      :	2666643192732969861120
+
