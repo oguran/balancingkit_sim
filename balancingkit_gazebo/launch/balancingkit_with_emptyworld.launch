@@ -18,10 +18,10 @@
   </include>
 
   <!-- Load the URDF into the ROS Parameter Server -->
-  <param name="balancingkit_sim/balancingkit_description" command="$(find xacro)/xacro.py '$(arg model)'" />
+  <param name="balancingkit_sim/robot_description" command="$(find xacro)/xacro.py '$(arg model)'" />
   
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model balancingkit -param balancingkit_sim/balancingkit_description"/>
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model balancingkit -param balancingkit_sim/robot_description"/>
 
   <!-- ros_control motoman launch file -->
   <include file="$(find balancingkit_control)/launch/balancingkit_control.launch"/>
