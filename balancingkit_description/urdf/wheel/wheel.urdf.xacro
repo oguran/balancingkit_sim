@@ -1,18 +1,17 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find raspimouse_description)/urdf/wheel/wheel.transmission.xacro"/>
-  <xacro:include filename="$(find raspimouse_description)/urdf/wheel/wheel.gazebo.xacro"/>
-  <!-- <property name="wheel_radius" value="0.0239"/> -->
-  <property name="wheel_radius" value="0.0249"/>
-  <property name="wheel_length" value="0.01"/>
-  <property name="wheel_mass" value="0.0113"/>
+  <xacro:include filename="$(find balancingkit_description)/urdf/wheel/wheel.transmission.xacro"/>
+  <xacro:include filename="$(find balancingkit_description)/urdf/wheel/wheel.gazebo.xacro"/>
+  <property name="wheel_radius" value="0.03825"/>
+  <property name="wheel_length" value="0.01"/> <!-- width? -->
+  <property name="wheel_mass" value="0.0192200809141"/>
   <xacro:macro name="wheel" params="prefix parent *joint_origin *joint_axis">
   <joint name="${prefix}_wheel_joint" type="continuous">
     <insert_block name="joint_origin"/>
     <insert_block name="joint_axis"/>
     <parent link="${parent}"/>
     <child link="${prefix}_wheel"/>
-    <limit effort="70" velocity="15"/>
+    <limit effort="70" velocity="15"/> <!-- TODO Need to calculate -->
     <safety_controller  k_velocity="10" />
     <dynamics damping="1.0" friction="1.0" />
   </joint>

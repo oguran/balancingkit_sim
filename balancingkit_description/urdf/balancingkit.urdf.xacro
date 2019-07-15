@@ -1,24 +1,28 @@
 <?xml version="1.0"?>
-<robot name="balancingkit_on_gazebo" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="balancingkit_on_gazebo"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
 
   <xacro:include filename="$(find balancingkit_description)/urdf/body/body.urdf.xacro"/>
   <xacro:include filename="$(find balancingkit_description)/urdf/wheel/wheel.urdf.xacro"/>
 
   <!-- =============== Link & Joint =============== -->
   <!-- Base -->
-  <link name="base_link"/>
+  <link name="base_footprint"/>
 
-  <xacro:base parent="base_link">
-    <origin xyz="0 0 0.040"/>
+  <xacro:base parent="base_footprint">
+    <origin xyz="0 0.02 0.0097"/>
   </xacro:base>
 
   <!-- Wheel -->
   <xacro:wheel prefix="right" parent="base_link">
-    <origin xyz="0.051 0 0" rpy="0 0 0"/>
+    <origin xyz="0.051 -0.02 -0.0097" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
   </xacro:wheel>
   <xacro:wheel prefix="left" parent="base_link">
-    <origin xyz="-0.051 0 0" rpy="0 0 0"/>
+    <origin xyz="-0.051 -0.02 -0.0097" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
   </xacro:wheel>
 
