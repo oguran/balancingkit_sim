@@ -32,18 +32,18 @@
   <!-- <xacro:wheel_trans prefix="left" interface="PositionJointInterface"/>  -->
   <!-- VelocityJointInterface: requires position, velocity -->
   <!-- for DiffDriveController -->
-<!--   <xacro:wheel_trans prefix="right" interface="VelocityJointInterface"/> -->
-<!--   <xacro:wheel_trans prefix="left" interface="VelocityJointInterface"/> -->
+  <xacro:wheel_trans prefix="right" interface="VelocityJointInterface"/>
+  <xacro:wheel_trans prefix="left" interface="VelocityJointInterface"/>
   <!-- EffortJointInterface: requires position, velocity, effort -->
   <!-- <xacro:wheel_trans prefix="right" interface="EffortJointInterface"/> -->
   <!-- <xacro:wheel_trans prefix="left" interface="EffortJointInterface"/>  -->
 
   <!-- =============== Gazebo =============== -->
-<!--     <gazebo> -->
-<!--       <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"> -->
-<!--         <robotNamespace>balancingkit_on_gazebo</robotNamespace> -->
-<!--       </plugin> -->
-<!--     </gazebo> -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>balancingkit_on_gazebo</robotNamespace>
+    </plugin>
+  </gazebo>
 
   <!-- Base -->
   <xacro:base_gazebo/>
