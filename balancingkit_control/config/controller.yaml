@@ -1,6 +1,6 @@
-balancingkit:
+balancingkit_on_gazebo:
   joint_state_controller:
-    type: joint_state_controller/JointStateController
+    type: "joint_state_controller/JointStateController"
     publish_rate: 50
 
   diff_drive_controller:
@@ -19,4 +19,7 @@ balancingkit:
 
     # Wheel separation and radius multipliers
     wheel_separation_multiplier: 1.0 # default: 1.0
-
+    wheel_radius_multiplier: 1.0 #default: 1.0
+    wheel_separation_multiplier: 1.0 #default: 1.0
+    base_frame_id: base_footprint
+    enable_odom_tf: true
