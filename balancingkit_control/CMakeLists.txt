@@ -13,7 +13,9 @@ find_package(catkin REQUIRED COMPONENTS
   control_msgs
   controller_manager
   robot_state_publisher
+  rospy
   sensor_msgs
+  std_msgs
 )
 
 ## System dependencies are found with CMake's conventions

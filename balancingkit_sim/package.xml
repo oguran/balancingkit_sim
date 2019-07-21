@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <name>balancingkit_sim</name>
+  <version>0.0.0</version>
+  <description>ROS package suite for balancingkit Simulator</description>
+
+  <maintainer email="oguran29@gmail.com">Takuya Ogura</maintainer>
+
+  <author email="oguran29@gmail.com">Takuya Ogura</author>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>balancingkit_description</run_depend>
+  <run_depend>balancingkit_gazebo</run_depend>
+  <run_depend>balancingkit_control</run_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>
