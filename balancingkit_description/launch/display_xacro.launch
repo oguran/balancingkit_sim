@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <!-- arguments -->
-  <arg name="model" default="$(find balancing_description)/urdf/balancingkit.urdf.xacro" />
+  <arg name="model" default="$(find balancing_description)/robots/balancingkit.urdf.xacro" />
   <arg name="rvizconfig" default="$(find balancing_description)/launch/config/urdf.rviz" />
   <arg name="gui" default="true" />
   <!-- parameters -->
