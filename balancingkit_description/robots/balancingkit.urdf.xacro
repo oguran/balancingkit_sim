@@ -7,6 +7,7 @@
 
   <xacro:include filename="$(find balancingkit_description)/urdf/body/body.urdf.xacro"/>
   <xacro:include filename="$(find balancingkit_description)/urdf/wheel/wheel.urdf.xacro"/>
+  <xacro:include filename="$(find balancingkit_description)/urdf/sensors/imu.urdf.xacro" />
 
   <!-- =============== Link & Joint =============== -->
   <!-- Base -->
@@ -25,6 +26,11 @@
     <origin xyz="-0.051 -0.02 -0.0097"/>
     <axis xyz="1 0 0"/>
   </xacro:wheel>
+
+  <!-- Sensors -->
+  <xacro:imu_sensor prefix="imu" parent="base_link">
+    <origin xyz="0.02 0.048 0"/>
+  </xacro:imu_sensor>
 
   <!-- ===============  Transmission =============== -->
   <!-- PositionJointInterface: requires position -->
@@ -54,6 +60,7 @@
   <xacro:wheel_gazebo prefix="left"/>
 
   <!-- Sensors -->
+  <xacro:imu_gazebo prefix="imu"/>
 
   <balancingkit_on_gazebo/>
 </robot>
