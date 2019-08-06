@@ -1,6 +1,8 @@
 #import smbus
+import rospy
 import struct
 import collections
+from sensor_msgs.msg import Imu
 
 #class Regs(object):
 #  CTRL1_XL    = 0x10
@@ -24,6 +26,10 @@ class LSM6(object):
 #    self.bus.write_byte_data(self.sa, Regs.CTRL2_G, 0x58) # 208 Hz ODR, 1000 dps FS
 #    self.bus.write_byte_data(self.sa, Regs.CTRL3_C, 0x04) # IF_INC = 1 (automatically increment register address)
 
+  def read(self):
+    self.read_gyro()
+    self.read_accel() 
+
   def read_gyro(self):
     byte_list = self.bus.read_i2c_block_data(self.sa, Regs.OUTX_L_G, 6)
     self.g = Vector(*struct.unpack('hhh', bytes(byte_list)))
@@ -32,6 +38,16 @@ class LSM6(object):
     byte_list = self.bus.read_i2c_block_data(self.sa, Regs.OUTX_L_XL, 6)
     self.a = Vector(*struct.unpack('hhh', bytes(byte_list)))
 
-  def read(self):
-    self.read_gyro()
-    self.read_accel() 
+  def imu_callback():
+    print "veloc angular z = " + str(msg.angular_velocity.z)
+        print "veloc angular y = " + str(msg.angular_velocity.y)
+            print "aceleracion linear x = " + str(msg.linear_acceleration.x)
+                print "aceleracion linear y = " + str(msg.linear_acceleration.y)
+
+  def listener():
+    rospy.init_node("virtual_lsm6", anonymous=True)
+    rospy.Subscriber('/imu/data', Imu, imu_callback)
+    rospy.spin()
+
+if __name__ == "__main__":
+    listener()
