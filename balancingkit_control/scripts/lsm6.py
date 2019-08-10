@@ -8,22 +8,17 @@ Vector = collections.namedtuple('Vector', 'x y z')
 
 class LSM6(object):
 
-  def __init__(self, slave_addr = 0b1101011):
+  def __init__(self):
     self.g = Vector(0, 0, 0)
     self.a = Vector(0, 0, 0)
 
+  def imu_callback(self, data):
+    self.g = Vector(data.angular_velocity)
+    self.a = Vector(data.linear_acceleration)
+
   def enable(self):
+    rospy.init_node("virtual_lsm6", anonymous=True)
+    rospy.Subscriber('/imu/data', Imu, self.imu_callback)
 
   def read(self):
-
-  def imu_callback():
-    self.g = Vector(msg.angular_velocity)
-    self.a = Vector(msg.linear_acceleration)
-
-  def listener():
-    rospy.init_node("virtual_lsm6", anonymous=True)
-    rospy.Subscriber('/imu/data', Imu, imu_callback)
-    rospy.spin()
-
-if __name__ == "__main__":
-    listener()
+    # nothing to do.
