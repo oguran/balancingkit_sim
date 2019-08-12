@@ -13,7 +13,7 @@
     <child link="${prefix}_wheel"/>
     <limit effort="70" velocity="15"/> <!-- TODO Need to calculate -->
     <safety_controller  k_velocity="10" />
-    <dynamics damping="1.0" friction="1.0" />
+    <dynamics damping="1.0" friction="1.0" /> <!-- TODO Need to consider -->
   </joint>
   <link name="${prefix}_wheel">
     <visual>
