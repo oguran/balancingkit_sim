@@ -5,8 +5,19 @@
       <!-- <selfCollide>true</selfCollide> -->
       <!-- <mu1 value="0.05" /> -->
       <!-- <mu2 value="0.05" /> -->
-      <mu1>0.05</mu1>
-      <mu2>0.05</mu2>
+      <material>Gazebo/DarkGrey</material>
+      <mu1>0.05</mu1> <!-- Coefficient of Friction -->
+      <mu2>0.05</mu2> <!-- Coefficient of Friction -->
+    </gazebo>
+    <gazebo reference="circuit_board">
+      <material>Gazebo/Green</material>
+      <mu1>0.05</mu1> <!-- Coefficient of Friction -->
+      <mu2>0.05</mu2> <!-- Coefficient of Friction -->
+    </gazebo>
+    <gazebo reference="battery_cover">
+      <material>Gazebo/DarkGrey</material>
+      <mu1>0.05</mu1> <!-- Coefficient of Friction -->
+      <mu2>0.05</mu2> <!-- Coefficient of Friction -->
     </gazebo>
   </xacro:macro>
 </robot>
