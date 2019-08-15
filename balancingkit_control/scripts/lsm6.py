@@ -1,4 +1,3 @@
-#import smbus
 import rospy
 import struct
 import collections

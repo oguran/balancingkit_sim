@@ -1,10 +1,12 @@
-# Copyright Pololu Corporation.  For more information, see https://www.pololu.com/
-import smbus
+import rospy
 import struct
 import time
 import threading
+import array
+import numpy as np
 
-SLAVE_ADDRESS = 20
+ASTER_ENC_CNT = 12
+ASTAR_GEAR_RATIO = 111
 
 class AStar:
   # This lock allows multiple threads in a program to use their own AStar
@@ -12,7 +14,13 @@ class AStar:
   lock = threading.Lock()
 
   def __init__(self):
-    self.bus = smbus.SMBus(1)
+    self.position = np.array([0, 0], dtype=np.int16);
+    self.raw_position = np.array([0.0, 0.0], dtype=np.float64);
+    rospy.init_node("virtual_a_star_encoder", anonymous=True)
+    rospy.Subscriber('/balancingkit_on_gazebo/joint_states', JointState, self.joint_state_callback)
+
+  def joint_state_callback(self, data):
+    self.raw_position = data.position;
 
   def read_unpack(self, address, size, format):
     # Ideally we could do this:
@@ -57,7 +65,9 @@ class AStar:
 #    return self.read_unpack(12, 12, "HHHHHH")
 
   def read_encoders(self):
-    return self.read_unpack(39, 4, 'hh')
+    enc_raw_cnt = (self.raw_position * ASTER_ENC_CNT * ASTAR_GEAR_RATIO);
+    enc_raw_pos_int64 = enc_raw_cnt.astype(np.int64) & 0xFFFF;
+    self.position = enc_raw_pos_int64.astype(np.int16);
 
 #  def test_read8(self):
 #    self.read_unpack(0, 8, 'cccccccc')

@@ -5,17 +5,10 @@
 
   <group ns="balancingkit_on_gazebo">
     <!-- load the controllers -->
-    <node name="controller_spawner" pkg="controller_manager"
-      type="spawner" output="screen" 
-      args="joint_state_controller 
-      diff_drive_controller 
-      "/>
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="joint_state_controller diff_drive_controller"/>
     <!-- convert joint states to TF transforms for rviz, etc -->
     <!-- this requires joint_state_controller -->
-    <node name="robot_state_publisher" pkg="robot_state_publisher"
-      type="robot_state_publisher"
-      respawn="false" output="screen" />
-    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen" />
     <!-- convert sensor values -->
     <!-- <node pkg="balancingkit_control" name="lightsensors" type="led_converter.py"/> -->
     <!-- <node name="dev_file_generator" pkg="balancingkit_control" type="gen_dev_file.sh" /> -->

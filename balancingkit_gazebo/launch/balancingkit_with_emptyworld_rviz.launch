@@ -42,7 +42,5 @@
   <!-- ros_control motoman launch file -->
   <include file="$(find balancingkit_control)/launch/balancingkit_control.launch"/>
 
-  <group ns="balancingkit_on_gazebo">
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true"/>
-  </group>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" ns="balancingkit_on_gazebo"/>
 </launch>

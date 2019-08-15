@@ -10,6 +10,11 @@
   <!-- nodes -->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+  <node name="balancingkit_model_tf_publisher" pkg="balancingkit_description" type="balancingkit_model_tf_publisher">
+    <param name="model_name" value="balancingkit" />
+    <param name="base_frame" value="base_footprint" />
+      <param name="world_frame" value="odom" />
+  </node>
   <!-- rviz -->
   <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(arg rvizconfig)" />
 </launch>
