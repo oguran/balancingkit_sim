@@ -16,11 +16,17 @@ class AStar:
   def __init__(self):
     self.position = np.array([0, 0], dtype=np.int16);
     self.raw_position = np.array([0.0, 0.0], dtype=np.float64);
+    self.raw_last_position = np.array([0.0, 0.0], dtype=np.float64);
+    self.raw_velocity_rpm = np.array([0.0, 0.0], dtype=np.float64);
+    self.raw_torq = np.array([0.0, 0.0], dtype=np.float64)
     rospy.init_node("virtual_a_star_encoder", anonymous=True)
     rospy.Subscriber('/balancingkit_on_gazebo/joint_states', JointState, self.joint_state_callback)
 
   def joint_state_callback(self, data):
+    self.raw_last_position = self.raw_position;
     self.raw_position = data.position;
+    # Following '50' is publish rate of joint_state_controller. @see contoroller.yaml
+    self.raw_velocity_rpm = (self.raw_last_position - self.raw_position) / (1/50) * 60;
 
   def read_unpack(self, address, size, format):
     # Ideally we could do this:
@@ -53,7 +59,9 @@ class AStar:
 #    self.write_pack(24, 'B15s', 1, notes.encode("ascii"))
 
   def motors(self, left, right):
+    vm = np.array([left, right]);
     self.write_pack(6, 'hh', left, right)
+    self.raw_torq = 620/(6*85) * vm - 1/85 * self.raw_velocity_rpm;
 
 #  def read_buttons(self):
 #    return self.read_unpack(3, 3, "???")
