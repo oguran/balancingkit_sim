@@ -1,3 +1,0 @@
-rosrun gazebo_ros spawn_model -file `rospack find balancingkit_description`/urdf/balancingkit.urdf -urdf -x 0 -y 0 -z 1 -model balancingki
-
-roslaunch balancingkit_gazebo test.launch

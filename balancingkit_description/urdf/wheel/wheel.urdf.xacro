@@ -5,8 +5,10 @@
   <property name="wheel_radius" value="0.03825"/>
   <property name="wheel_length" value="0.01"/> <!-- width? -->
   <property name="wheel_mass" value="0.0192200809141"/>
-  <xacro:macro name="wheel" params="prefix parent origin_x *joint_origin *joint_axis">
+  <xacro:macro name="wheel" params="prefix parent origin_x origin_x_2 *joint_origin *joint_axis">
   <joint name="${prefix}_wheel_joint" type="continuous">
+    <origin xyz="${origin_x} -0.02 -0.0097"/>
+    <axis xyz="1 0 0"/>
     <!-- <insert_block name="joint_origin"/> -->
     <insert_block name="joint_axis"/>
     <parent link="${parent}"/>
@@ -17,20 +19,21 @@
   </joint>
   <link name="${prefix}_wheel">
     <visual>
-      <origin xyz="${origin_x} 0.02 0.0097" rpy="0 0 0"/>
+      <origin xyz="${origin_x_2} 0.02 0.0097" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://balancingkit_description/meshes/stl/wheel/balboa_balancing_robot_kit_wheel_${prefix}_m.stl"/>
       </geometry>
     </visual>
     <collision>
       <!-- <insert_block name="joint_origin"/> -->
-      <origin xyz="${origin_x} 0.02 0.0097" rpy="0 0 0"/>
+      <origin xyz="${origin_x_2} 0.02 0.0097" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://balancingkit_description/meshes/stl/wheel/balboa_balancing_robot_kit_wheel_${prefix}_m.stl"/>
       </geometry>
     </collision>
       <inertial>
-        <origin xyz="${origin_x} 0.02 0.0097" rpy="0 0 0"/>
+        <origin xyz="${origin_x_2} 0.02 0.0097" rpy="0 0 0"/>
+        <origin xyz="0 0 0"/>
         <mass value="${wheel_mass}"/>
         <inertia ixx="0.000021836231232000" ixy="0.000000000014016411" ixz="-0.000000000002704489" iyy="0.000011052671184900" iyz="-0.000000000002905832" izz="0.000011048923704800" />
       </inertial>

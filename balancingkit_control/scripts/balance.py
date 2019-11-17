@@ -282,3 +282,11 @@ def subtract_16_bit(a, b):
     diff -= 0x10000
   return diff
 
+balancer = Balancer()
+
+if __name__ == "__main__":
+    balancer.setup()
+    balancer.stand_up()
+    for i in range(1000):
+        time.sleep(0.1) # wait for IMU readings to stabilize
+        print(balancer.angle)
