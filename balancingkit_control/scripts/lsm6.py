@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import rospy
 import struct
 import collections
@@ -16,8 +18,8 @@ class LSM6(object):
     self.a = Vector(data.linear_acceleration)
 
   def enable(self):
-    rospy.init_node("virtual_lsm6", anonymous=True)
+    #rospy.init_node("virtual_lsm6", anonymous=True)
     rospy.Subscriber('/imu/data', Imu, self.imu_callback)
 
-  def read(self):
+#  def read(self):
     # nothing to do.

@@ -1,9 +1,13 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import rospy
 import struct
 import time
 import threading
 import array
 import numpy as np
+from std_msgs.msg import Float64
+from sensor_msgs.msg import JointState
 
 ASTER_ENC_CNT = 12
 ASTAR_GEAR_RATIO = 111
@@ -19,16 +23,18 @@ class AStar:
     self.raw_last_position = np.array([0.0, 0.0], dtype=np.float64);
     self.raw_velocity_rpm = np.array([0.0, 0.0], dtype=np.float64);
     self.raw_torq = np.array([0.0, 0.0], dtype=np.float64)
-    rospy.init_node("virtual_a_star_encoder", anonymous=True)
+    rospy.init_node("virtual_a_star", anonymous=True)
     rospy.Subscriber('/balancingkit_on_gazebo/joint_states', JointState, self.joint_state_callback)
+    pub_l = rospy.Publisher('/balancingkit_on_gazebo/left_joint_effort_controller/command', Float64, queue_size=10)
+    pub_r = rospy.Publisher('/balancingkit_on_gazebo/right_joint_effort_controller/command', Float64, queue_size=10)
 
   def joint_state_callback(self, data):
     self.raw_last_position = self.raw_position;
     self.raw_position = data.position;
     # Following '50' is publish rate of joint_state_controller. @see contoroller.yaml
-    self.raw_velocity_rpm = (self.raw_last_position - self.raw_position) / (1/50) * 60;
+    self.raw_velocity_rpm = (self.raw_last_position - self.raw_position) / (1.0/50.0) * 60.0;
 
-  def read_unpack(self, address, size, format):
+#  def read_unpack(self, address, size, format):
     # Ideally we could do this:
     #    byte_list = self.bus.read_i2c_block_data(SLAVE_ADDRESS, address, size)
     # But the AVR's TWI module can't handle a quick write->read transition,
@@ -38,19 +44,19 @@ class AStar:
     #
     # A delay of 0.0001 (100 us) after each write is enough to account
     # for the worst-case situation in our example code.
-    AStar.lock.acquire()
-    self.bus.write_byte(SLAVE_ADDRESS, address)
-    time.sleep(0.0001)
-    byte_list = [self.bus.read_byte(SLAVE_ADDRESS) for _ in range(size)]
-    AStar.lock.release()
-    return struct.unpack(format, bytes(byte_list))
+#    AStar.lock.acquire()
+#    self.bus.write_byte(SLAVE_ADDRESS, address)
+#    time.sleep(0.0001)
+#    byte_list = [self.bus.read_byte(SLAVE_ADDRESS) for _ in range(size)]
+#    AStar.lock.release()
+#    return struct.unpack(format, bytes(byte_list))
 
-  def write_pack(self, address, format, *data):
-    data_array = list(struct.pack(format, *data))
-    AStar.lock.acquire()
-    self.bus.write_i2c_block_data(SLAVE_ADDRESS, address, data_array)
-    time.sleep(0.0001)
-    AStar.lock.release()
+#  def write_pack(self, address, format, *data):
+#    data_array = list(struct.pack(format, *data))
+#    AStar.lock.acquire()
+#    self.bus.write_i2c_block_data(SLAVE_ADDRESS, address, data_array)
+#    time.sleep(0.0001)
+#    AStar.lock.release()
 
 #  def leds(self, red, yellow, green):
 #    self.write_pack(0, 'BBB', red, yellow, green)
@@ -60,8 +66,10 @@ class AStar:
 
   def motors(self, left, right):
     vm = np.array([left, right]);
-    self.write_pack(6, 'hh', left, right)
+#    self.write_pack(6, 'hh', left, right)
     self.raw_torq = 620/(6*85) * vm - 1/85 * self.raw_velocity_rpm;
+    pub_l(self.raw_torq[0]);
+    pub_r(self.raw_torq[1]);
 
 #  def read_buttons(self):
 #    return self.read_unpack(3, 3, "???")
