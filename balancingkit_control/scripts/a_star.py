@@ -25,14 +25,15 @@ class AStar:
     self.raw_torq = np.array([0.0, 0.0], dtype=np.float64)
     rospy.init_node("virtual_a_star", anonymous=True)
     rospy.Subscriber('/balancingkit_on_gazebo/joint_states', JointState, self.joint_state_callback)
-    pub_l = rospy.Publisher('/balancingkit_on_gazebo/left_joint_effort_controller/command', Float64, queue_size=10)
-    pub_r = rospy.Publisher('/balancingkit_on_gazebo/right_joint_effort_controller/command', Float64, queue_size=10)
+    self.pub_l = rospy.Publisher('/balancingkit_on_gazebo/left_joint_effort_controller/command', Float64, queue_size=10)
+    self.pub_r = rospy.Publisher('/balancingkit_on_gazebo/right_joint_effort_controller/command', Float64, queue_size=10)
 
   def joint_state_callback(self, data):
     self.raw_last_position = self.raw_position;
     self.raw_position = data.position;
     # Following '50' is publish rate of joint_state_controller. @see contoroller.yaml
-    self.raw_velocity_rpm = (self.raw_last_position - self.raw_position) / (1.0/50.0) * 60.0;
+    self.raw_velocity_rpm[0] = (self.raw_last_position[0] - self.raw_position[0]) / (1.0/50.0) * 60.0;
+    self.raw_velocity_rpm[1] = (self.raw_last_position[1] - self.raw_position[1]) / (1.0/50.0) * 60.0;
 
 #  def read_unpack(self, address, size, format):
     # Ideally we could do this:
@@ -68,8 +69,8 @@ class AStar:
     vm = np.array([left, right]);
 #    self.write_pack(6, 'hh', left, right)
     self.raw_torq = 620/(6*85) * vm - 1/85 * self.raw_velocity_rpm;
-    pub_l(self.raw_torq[0]);
-    pub_r(self.raw_torq[1]);
+    self.pub_l.publish(self.raw_torq[0]);
+    self.pub_r.publish(self.raw_torq[1]);
 
 #  def read_buttons(self):
 #    return self.read_unpack(3, 3, "???")
@@ -82,8 +83,9 @@ class AStar:
 
   def read_encoders(self):
     enc_raw_cnt = (self.raw_position * ASTER_ENC_CNT * ASTAR_GEAR_RATIO);
-    enc_raw_pos_int64 = enc_raw_cnt.astype(np.int64) & 0xFFFF;
-    self.position = enc_raw_pos_int64.astype(np.int16);
+    self.position[0] = int(enc_raw_cnt[0]) & 0xFFFF;
+    self.position[1] = int(enc_raw_cnt[1]) & 0xFFFF;
+    return self.position
 
 #  def test_read8(self):
 #    self.read_unpack(0, 8, 'cccccccc')

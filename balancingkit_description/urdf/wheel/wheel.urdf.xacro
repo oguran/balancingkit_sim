@@ -33,7 +33,6 @@
     </collision>
       <inertial>
         <origin xyz="${origin_x_2} 0.02 0.0097" rpy="0 0 0"/>
-        <origin xyz="0 0 0"/>
         <mass value="${wheel_mass}"/>
         <inertia ixx="0.000021836231232000" ixy="0.000000000014016411" ixz="-0.000000000002704489" iyy="0.000011052671184900" iyz="-0.000000000002905832" izz="0.000011048923704800" />
       </inertial>

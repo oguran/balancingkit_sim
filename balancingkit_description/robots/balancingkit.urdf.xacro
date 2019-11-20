@@ -14,7 +14,8 @@
   <link name="base_footprint"/>
 
   <xacro:base parent="base_footprint">
-    <origin xyz="0 0.02 0.0097"/>
+    <!--<origin xyz="0 0.02 0.0097"/>-->
+    <origin xyz="0 0 0"/>
   </xacro:base>
 
   <!-- Wheel -->
@@ -38,11 +39,11 @@
   <!-- <xacro:wheel_trans prefix="left" interface="PositionJointInterface"/>  -->
   <!-- VelocityJointInterface: requires position, velocity -->
   <!-- for DiffDriveController -->
-  <xacro:wheel_trans prefix="right" interface="hardware_interface/VelocityJointInterface"/>
-  <xacro:wheel_trans prefix="left" interface="hardware_interface/VelocityJointInterface"/>
+  <!-- <xacro:wheel_trans prefix="right" interface="hardware_interface/VelocityJointInterface"/> -->
+  <!-- <xacro:wheel_trans prefix="left" interface="hardware_interface/VelocityJointInterface"/> -->
   <!-- EffortJointInterface: requires position, velocity, effort -->
-  <!-- <xacro:wheel_trans prefix="right" interface="hardware_interface/EffortJointInterface"/> -->
-  <!-- <xacro:wheel_trans prefix="left" interface="hardware_interface/EffortJointInterface"/> -->
+  <xacro:wheel_trans prefix="right" interface="hardware_interface/EffortJointInterface"/>
+  <xacro:wheel_trans prefix="left" interface="hardware_interface/EffortJointInterface"/>
 
   <!-- =============== Gazebo =============== -->
   <gazebo>

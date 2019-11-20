@@ -6,10 +6,10 @@ balancingkit_on_gazebo:
 
   left_joint_effort_controller:
     type: "effort_controllers/JointEffortController"
-    joint: left_wheel_joint
+    joint: 'left_wheel_joint'
   right_joint_effort_controller:
     type: "effort_controllers/JointEffortController"
-    joint: right_wheel_joint
+    joint: 'right_wheel_joint'
 
   diff_drive_controller:
     type        : "diff_drive_controller/DiffDriveController"
