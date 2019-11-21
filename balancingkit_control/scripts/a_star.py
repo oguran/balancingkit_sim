@@ -31,6 +31,7 @@ class AStar:
   def joint_state_callback(self, data):
     self.raw_last_position = self.raw_position;
     self.raw_position = data.position;
+    print 'joint_state_callback data = ', data
     # Following '50' is publish rate of joint_state_controller. @see contoroller.yaml
     self.raw_velocity_rpm[0] = (self.raw_last_position[0] - self.raw_position[0]) / (1.0/50.0) * 60.0;
     self.raw_velocity_rpm[1] = (self.raw_last_position[1] - self.raw_position[1]) / (1.0/50.0) * 60.0;
@@ -67,8 +68,12 @@ class AStar:
 
   def motors(self, left, right):
     vm = np.array([left, right]);
+    print '!!!!!!!!!!!!!!!!!!!!!! motor start vm = ', vm, ' !!!!!!!!!!!!!!!!!!!i!!!!!!!!'
 #    self.write_pack(6, 'hh', left, right)
-    self.raw_torq = 620/(6*85) * vm - 1/85 * self.raw_velocity_rpm;
+    self.raw_torq = 620/(6*85) * vm - 1/85 * self.raw_velocity_rpm
+    self.raw_torq[0] = 1
+    self.raw_torq[1] = 1
+    print '!!!!!!!!!!!!!!!!!!!!!! motor publish torq = ', self.raw_torq, ' !!!!!!!!!!!!!!!!!!!i!!!!!!!!'
     self.pub_l.publish(self.raw_torq[0]);
     self.pub_r.publish(self.raw_torq[1]);
 

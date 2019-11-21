@@ -16,6 +16,7 @@ class LSM6(object):
   def imu_callback(self, data):
     self.g = Vector(data.angular_velocity.x, data.angular_velocity.y, data.angular_velocity.z)
     self.a = Vector(data.linear_acceleration.x, data.linear_acceleration.y, data.linear_acceleration.z)
+    print 'imu_callback self.g = ', self.g, '  imu_callback self.a = ', self.a
 
   def enable(self):
     #rospy.init_node("virtual_lsm6", anonymous=True)

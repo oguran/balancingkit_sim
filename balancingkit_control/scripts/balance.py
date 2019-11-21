@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 import time
 import threading
 
@@ -122,8 +123,9 @@ class Balancer:
     if self.calibrated:
       if not self.running:
         self.running = True
-        self.next_update = time.clock_gettime(time.CLOCK_MONOTONIC_RAW)
-        self.update_thread = threading.Thread(target=self.update_loop, daemon=True)
+        self.next_update = time.time()
+        self.update_thread = threading.Thread(target=self.update_loop)
+        self.update_thread.setDaemon(True)
         self.update_thread.start()
     else:
       raise RuntimeError("IMU not enabled/calibrated; can't start balancer")
@@ -150,8 +152,9 @@ class Balancer:
       for _ in range(40):
         time.sleep(UPDATE_TIME)
         self.update_sensors()
-        print(self.angle)
+        print '=========== before stand up self.angle = ', self.angle
         if abs(self.angle) < 60:
+          print '!!!!!! standuped !!!!!!!!'
           break
 
       self.motor_speed = sign*MOTOR_SPEED_LIMIT
@@ -176,7 +179,7 @@ class Balancer:
 
       # Perform the balance updates at 100 Hz.
       self.next_update += UPDATE_TIME
-      now = time.clock_gettime(time.CLOCK_MONOTONIC_RAW)
+      now = time.time()
       time.sleep(max(self.next_update - now, 0))
 
     # stop() has been called and the loop has exited. Stop the motors.
@@ -217,7 +220,7 @@ class Balancer:
   def reset(self):
     self.motor_speed = 0
     self.reset_encoders()
-    self.a_star.motors(0, 0)
+    #self.a_star.motors(0, 0)
 
     if abs(self.angle_rate) < 2:
       # It's really calm, so assume the robot is resting at 110 degrees from vertical.
@@ -273,7 +276,7 @@ class Balancer:
     # forth due to differences in the motors, and it allows the
     # robot to perform controlled turns.
     distance_diff = self.distance_left - self.distance_right
-    
+
     self.a_star.motors(
       int(self.motor_speed + distance_diff * DISTANCE_DIFF_RESPONSE / 100),
       int(self.motor_speed - distance_diff * DISTANCE_DIFF_RESPONSE / 100))
@@ -289,6 +292,6 @@ balancer = Balancer()
 if __name__ == "__main__":
     balancer.setup()
     balancer.stand_up()
-    for i in range(1000):
+    for i in range(100):
         time.sleep(0.1) # wait for IMU readings to stabilize
-        print(balancer.angle)
+        print 'in main balancer.angle = ', balancer.angle
